@@ -77,7 +77,7 @@ def designCalculateTax():
         """)
         more_tax = input("\n\tDo you want to calculate again (1. yes / 2. no - go back): ")
         if more_tax == "2":
-            print("\tRegresando al menú principal...\n")
+            print("\tgoing back\n")
             save_file(person_data)
             sleep(1.5)
             break

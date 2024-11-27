@@ -1,5 +1,5 @@
 from menu.calculateTax import designCalculateTax
-from menu.seeList import desginSeeList
+from menu.seeList import designSeeList
 from time import sleep
 import os
 import keyboard
@@ -17,17 +17,16 @@ while True:
     ---------------------------------------------------
     """)
     option = input("\tChoose an option(1-3): ")
-    match option:
-        case "1":
-            os.system('clear')
-            designCalculateTax()
-        case "2":
-            os.system('clear')
-            desginSeeList()
-        case "3":
-            os.system('clear')
-            print("Thanks for using taxes calculator")
-            sleep(1.5)
-            break
-        case _:
-            print("Try again")
+    
+    if option == "1":
+        designCalculateTax()
+    elif option == "2":
+        designSeeList()
+    elif option == "3":
+        os.system('clear')
+        print("Thanks for using tax calculator")
+        sleep(1.5)
+        break
+    else:
+        print("\tInvalid option, try again")
+        sleep(1.5)

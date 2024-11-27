@@ -1,16 +1,15 @@
 {
-    "drink": [
+    "Especial Tax (5%)": [
         {
-            "amount": 4500.0,
-            "description": "me ciompre uina coca",
-            "date": "25/11/2024"
+            "amount": 12.0
+        },
+        {
+            "amount": 300.0
         }
     ],
-    "chucheria": [
+    "Local Tax (8%)": [
         {
-            "amount": 6000.0,
-            "description": "me compre un monton de dulces",
-            "date": "20/10/2024"
+            "amount": 23.0
         }
     ]
 }

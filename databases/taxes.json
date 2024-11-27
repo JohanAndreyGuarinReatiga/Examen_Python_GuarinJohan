@@ -1,0 +1,16 @@
+{
+    "drink": [
+        {
+            "amount": 4500.0,
+            "description": "me ciompre uina coca",
+            "date": "25/11/2024"
+        }
+    ],
+    "chucheria": [
+        {
+            "amount": 6000.0,
+            "description": "me compre un monton de dulces",
+            "date": "20/10/2024"
+        }
+    ]
+}

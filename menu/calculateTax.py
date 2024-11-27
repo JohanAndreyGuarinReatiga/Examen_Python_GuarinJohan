@@ -3,29 +3,29 @@ import os
 from time import sleep
 
 def designCalculateTax():
-    person_data = read_file("taxes.json")
+    person_data = read_file("databases/taxes.json")
     while True:
         print("""
         ---------------------------------------------------
-                          TAX CALCULATION
+                        TAXES CALCULATION
         ---------------------------------------------------
-            Enter the amount of the product or the service
+            Enter the amount of the product or service
         ---------------------------------------------------
         """)
         try:
-            amount = float(input("\tEnter amount: "))
+            amount = float(input("\tEnter: "))
         except ValueError:
-            print("\tInvalid amount, please enter a valid number.")
-            sleep(1.5)
+            print("\tInvalid, try again")
+            sleep(1)
             continue
         
         print("""
         ---------------------------------------------------
-        Choose the tax type:
+        Choose the type of tax:
         1. IVA (10%)
-        2. Especial Tax (5%)
+        2. Special tax (5%)
         3. Local Tax (8%)
-        4. Other (enter a personalized tax)
+        4. Other 
         5. Go back
         ---------------------------------------------------
         """)
@@ -38,10 +38,10 @@ def designCalculateTax():
             tax_description = "IVA (10%)"
         elif category == "2":
             tax_rate = 5
-            tax_description = "Especial Tax (5%)"
+            tax_description = "Impuesto Especial (5%)"
         elif category == "3":
             tax_rate = 8
-            tax_description = "Local Tax (8%)"
+            tax_description = "Impuesto Local (8%)"
         elif category == "4":
             try:
                 custom_tax = float(input("\tIngrese un valor en porcentaje: "))
@@ -60,10 +60,24 @@ def designCalculateTax():
             sleep(1.5)
             continue
         
-        person_data = user_data(person_data, amount, tax_description)
-        print(f"\tImpuesto registrado con éxito: {tax_description} sobre monto {amount}")
+        tax_amount = calculationOne(amount, tax_rate)
+        total_amount = amount + tax_amount
 
-        more_tax = input("\n\t¿Desea agregar otro impuesto? (s/n): ")
-        if more_tax.lower() == "n":
-            print("\tFinalizando el cálculo de impuestos...\n")
+
+        person_data = user_data(person_data, amount, tax_rate, tax_description, tax_amount, total_amount)
+        print(f"""
+        ---------------------------------------------------
+                RESULTADO DEL CÁLCULO
+        ---------------------------------------------------
+        Precio Base: ${amount}
+        Impuesto(s):
+        - {tax_description}: ${tax_amount}
+        Total con impuestos: ${total_amount}
+        ---------------------------------------------------
+        """)
+        more_tax = input("\n\t¿Desea hacer otro cálculo? (1. Sí / 2. No - Regresa al menú principal): ")
+        if more_tax == "2":
+            print("\tRegresando al menú principal...\n")
+            save_file(person_data)
             sleep(1.5)
+            break

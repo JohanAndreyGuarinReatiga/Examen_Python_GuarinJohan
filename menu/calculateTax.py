@@ -38,25 +38,25 @@ def designCalculateTax():
             tax_description = "IVA (10%)"
         elif category == "2":
             tax_rate = 5
-            tax_description = "Impuesto Especial (5%)"
+            tax_description = "Special tax (5%)"
         elif category == "3":
             tax_rate = 8
-            tax_description = "Impuesto Local (8%)"
+            tax_description = "Local Tax (8%)"
         elif category == "4":
             try:
-                custom_tax = float(input("\tIngrese un valor en porcentaje: "))
+                custom_tax = float(input("\tEnter a percentage: "))
                 tax_rate = custom_tax
-                tax_description = f"Otro ({custom_tax}%)"
+                tax_description = f"Other ({custom_tax}%)"
             except ValueError:
-                print("\tValor de impuesto inválido, por favor intente de nuevo.")
+                print("\tInvalid, try again.")
                 sleep(1.5)
                 continue
         elif category == "5":
-            print("\tRegresando al menú principal...")
+            print("\tLeaving")
             save_file(person_data)
             break
         else:
-            print("\tOpción inválida, por favor intente de nuevo.")
+            print("\tInvalid, try again")
             sleep(1.5)
             continue
         
@@ -67,15 +67,15 @@ def designCalculateTax():
         person_data = user_data(person_data, amount, tax_rate, tax_description, tax_amount, total_amount)
         print(f"""
         ---------------------------------------------------
-                RESULTADO DEL CÁLCULO
+                        Calculation result
         ---------------------------------------------------
-        Precio Base: ${amount}
-        Impuesto(s):
+        Base amount: ${amount}
+        Tax(es):
         - {tax_description}: ${tax_amount}
-        Total con impuestos: ${total_amount}
+        Total with taxes: ${total_amount}
         ---------------------------------------------------
         """)
-        more_tax = input("\n\t¿Desea hacer otro cálculo? (1. Sí / 2. No - Regresa al menú principal): ")
+        more_tax = input("\n\tDo you want to calculate again (1. yes / 2. no - go back): ")
         if more_tax == "2":
             print("\tRegresando al menú principal...\n")
             save_file(person_data)
